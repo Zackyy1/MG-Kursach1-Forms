@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataBase>
+  <Students>
+    <Student name="Obi Wan" surname="Kenobi" personalCode="3483927487" birthday="12/12/1212" address="Kashyyyk" phone="4274687" parentsPhone="4372647" />
+    <Student name="Jar Jar" surname="Binks" personalCode="412412876" birthday="123/4124/12421" address="8th Galaxy" phone="34324234" parentsPhone="43243234" />
+    <Student name="Anakin" surname="Skywalker" personalCode="123124121" birthday="123/13/23" address="Tatooine" phone="41267236" parentsPhone="362713462" />
+    <Student name="Darth" surname="Maul" personalCode="34868426" birthday="42/12/4241" address="Sith Planet" phone="34186782" parentsPhone="7234618726" />
+    <Student name="Leia" surname="Skywalker" personalCode="214884278" birthday="12/52/1252" address="Tatooine" phone="3214678" parentsPhone="4736287" />
+    <Student name="Han" surname="Solo" personalCode="374623786" birthday="541/125/241" address="Falcon 5" phone="23412876" parentsPhone="43284784" />
+    <Student name="Chew" surname="Bacca" personalCode="41248788" birthday="51/12/5122" address="WookieLand" phone="42142787" parentsPhone="43724837" />
+    <Student name="Luke" surname="Skywalker" personalCode="412472817" birthday="43/12/4215" address="Tatooine" phone="4214787" parentsPhone="4384784" />
+    <Student name="Finn" surname="The Stormtrooper" personalCode="4321147878" birthday="15/15/2523" address="Death Star" phone="21786786" parentsPhone="43726764" />
+  </Students>
+  <Teachers>
+    <Teacher name="Master" surname="Yoda" birthday="00/00/1414" />
+    <Teacher name="Count" surname="Dooku" birthday="01/21/1232" />
+    <Teacher name="Mace" surname="Windu" birthday="23/15/1252" />
+    <Teacher name="Darth" surname="Plagueis" birthday="12/512/2512" />
+    <Teacher name="Average" surname="Stormtrooper" birthday="12/42/1223" />
+  </Teachers>
+  <Staff>
+    <Worker name="Jabba" surname="the Hutt" birthday="Janitor" job="7/42/2444" />
+    <Worker name="Bobba" surname="Fett" birthday="Security" job="32/12/1564" />
+  </Staff>
+  <Courses>
+    <Course name="Jedi lessons" teacher="Master Yoda" room="Jedi training room" />
+    <Course name="Sith lessons" teacher="Darth Plagueis" room="Sith training room" />
+    <Course name="Lasergun shooting course" teacher="Average Stormtrooper" room="Shooting range" />
+  </Courses>
+  <Rooms>
+    <Room name="Jedi training room" roomTeacher="Master Yoda" />
+    <Room name="Sith training room" roomTeacher="Darth Plagueis" />
+    <Room name="Shooting range" roomTeacher="Average Stormtrooper" />
+  </Rooms>
+  <Groups>
+    <Group name="Jedi" teacher="Master Yoda">
+      <GroupMember name="Anakin Skywalker" />
+      <GroupMember name="Obi Wan Kenobi" />
+      <GroupMember name="Luke Skywalker" />
+    </Group>
+    <Group name="Sith lords" teacher="Count Dooku">
+      <GroupMember name="Jar Jar Binks" />
+      <GroupMember name="Darth Maul" />
+    </Group>
+    <Group name="Cool guys" teacher="Mace Windu">
+      <GroupMember name="Han Solo" />
+      <GroupMember name="Leia Skywalker" />
+      <GroupMember name="Luke Skywalker" />
+      <GroupMember name="Chew Bacca" />
+    </Group>
+  </Groups>
+  <Subjects>
+    <Subject name="Jedi teaching" teacher="Master Yoda" />
+    <Subject name="Sith teaching" teacher="Count Dooku" />
+    <Subject name="Lasergun training" teacher="Average Stormtrooper" />
+  </Subjects>
+  <Schedule>
+    <ScheduleEntry teacher="Master Yoda" subject="Jedi teaching " date="15.03.2019 12:00:00" />
+    <ScheduleEntry teacher="Average Stormtrooper" subject="Lasergun training " date="15.03.2019 19:29:25" />
+    <ScheduleEntry teacher="Darth Plagueis" subject="Sith teaching " date="01.03.2019 8:29:25" />
+  </Schedule>
+</DataBase>
