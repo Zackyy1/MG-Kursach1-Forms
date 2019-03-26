@@ -21,6 +21,10 @@ namespace Martin_G_Praktika_Forms
         public Form1()
         {
             InitializeComponent();
+
+            
+
+
             if (!File.Exists("DB.xml"))
             {
                 
@@ -126,6 +130,48 @@ namespace Martin_G_Praktika_Forms
 
         }
 
+        public static bool NodeTest(string arg)
+        {
+            if (!File.Exists("Testing.xml"))
+            {
+
+                XmlWriter xmlWriter = XmlWriter.Create("Testing.xml");
+                xmlWriter.WriteStartDocument();
+                    xmlWriter.WriteStartElement("TestRoot");
+                        xmlWriter.WriteStartElement("TestNode");
+                        xmlWriter.WriteEndElement();
+                    xmlWriter.WriteEndElement();
+                xmlWriter.WriteEndDocument();
+                xmlWriter.Close();
+            }
+
+            XmlDocument xml = new XmlDocument();
+            xml.Load("Testing.xml");
+
+            if (arg == "write")
+            {
+                bool toreturn = false;
+                XmlElement newElement = xml.CreateElement("WriteTest");
+                var node = xml.SelectSingleNode("//TestRoot/TestNode");
+                node.AppendChild(newElement);
+                
+
+                if (node.HasChildNodes)
+                {
+                    Debug.WriteLine("Has child nodes, removing and returning true");
+                    node.RemoveAll();
+                    toreturn = true;
+                }
+                xml.Save("Testing.xml");
+                return toreturn;
+
+            } else
+            {
+                return false;
+            }
+
+            
+        }
         
         private void showStudents()
         {
