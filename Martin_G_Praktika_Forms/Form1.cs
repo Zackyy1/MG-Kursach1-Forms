@@ -1,34 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Text;
-using System.Xml;
-using System.IO;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Text;
+using System.Windows.Forms;
+using System.Xml;
 namespace Martin_G_Praktika_Forms
 {
 
-    
+
 
     public partial class Form1 : Form
     {
         public Form1()
         {
+
+            TestMethods.testReading();
+
             InitializeComponent();
             if (!File.Exists("DB.xml"))
             {
-                
-            XmlWriter xmlWriter = XmlWriter.Create("DB.xml");
-            xmlWriter.WriteStartDocument();
-            xmlWriter.WriteStartElement("DataBase");
+
+                XmlWriter xmlWriter = XmlWriter.Create("DB.xml");
+                xmlWriter.WriteStartDocument();
+                xmlWriter.WriteStartElement("DataBase");
                 xmlWriter.WriteStartElement("Students");
-                
+
                 xmlWriter.WriteEndElement();
                 xmlWriter.WriteStartElement("Teachers");
 
@@ -54,24 +52,24 @@ namespace Martin_G_Praktika_Forms
                 xmlWriter.WriteStartElement("Groups");
 
                 xmlWriter.WriteEndElement();
-                
+
 
 
 
                 xmlWriter.WriteEndElement();
 
-            xmlWriter.WriteEndDocument();
+                xmlWriter.WriteEndDocument();
 
-            xmlWriter.Close();
+                xmlWriter.Close();
             }
             else
             {
-                // Update function for students, for now.
+                // update function for students, for now.
                 showStudents();
                 activePanel = studentsEntry;
                 activePanel.Location = new Point(activePanel.Location.X - 500, activePanel.Location.Y);
                 activePanel.Left += 500;
-                
+
 
             }
         }
@@ -98,7 +96,8 @@ namespace Martin_G_Praktika_Forms
             if (activePanel.Left > 700)
             {
                 activePanel.Left -= 500;
-            } else
+            }
+            else
             {
                 activePanel.Left += 500;
 
@@ -126,7 +125,8 @@ namespace Martin_G_Praktika_Forms
 
         }
 
-        
+
+
         private void showStudents()
         {
             active = "Student";
@@ -196,7 +196,7 @@ namespace Martin_G_Praktika_Forms
                 sb.Append(student.GetAttribute("name".ToString()) + " ");
                 sb.Append(student.GetAttribute("surname".ToString()) + " | ");
                 sb.Append(student.GetAttribute("birthday".ToString()));
-                
+
                 tableItems.Items.Add(sb.ToString());
             }
         }
@@ -295,21 +295,21 @@ namespace Martin_G_Praktika_Forms
             }
             XmlNodeList teachers = xml.GetElementsByTagName("Teacher");
             courseTeacher.Items.Clear();
-                foreach (XmlElement teacher in teachers)
-                {
-                    courseTeacher.Items.Add(teacher.GetAttribute("name") + " " + teacher.GetAttribute("surname"));
-                }
-            
+            foreach (XmlElement teacher in teachers)
+            {
+                courseTeacher.Items.Add(teacher.GetAttribute("name") + " " + teacher.GetAttribute("surname"));
+            }
+
 
             XmlNodeList rooms = xml.GetElementsByTagName("Room");
             courseRoom.Items.Clear();
             courseRoom.Items.Add("Shared");
 
             foreach (XmlElement room in rooms)
-                {
-                    courseRoom.Items.Add(room.GetAttribute("name"));
-                }
-            
+            {
+                courseRoom.Items.Add(room.GetAttribute("name"));
+            }
+
         }
         private void coursesPage(object sender, EventArgs e)
         {
@@ -519,7 +519,7 @@ namespace Martin_G_Praktika_Forms
         }
         private void showGroups()
         {
-            
+
             XmlDocument xml = new XmlDocument();
             xml.Load("DB.xml");
             XmlNodeList teachersList = xml.GetElementsByTagName("Group");
@@ -547,14 +547,14 @@ namespace Martin_G_Praktika_Forms
             }
 
 
-            
+
         }
         private void submitGroups(object sender, EventArgs e)
         {
             string name = groupName.Text;
             string teacher = groupTeacher.Text;
             string[] students = { };
-            
+
             /*
              * foreach (string obj in studentList.Items) {
                 //students.Append(studentList.GetItemText(obj));
@@ -585,14 +585,14 @@ namespace Martin_G_Praktika_Forms
                 if (group.GetAttribute("name") == groupName.Text)
                 {
 
-                   
-                    
-                    for (int i = studentList.SelectedIndices.Count-1; i >= 0 ; i--)
+
+
+                    for (int i = studentList.SelectedIndices.Count - 1; i >= 0; i--)
                     {
                         string toDelete = studentList.SelectedItems[i].ToString();
                         XmlNodeList members = group.GetElementsByTagName("GroupMember");
-                       
-                        for (int b = members.Count-1; b >= 0; b--)
+
+                        for (int b = members.Count - 1; b >= 0; b--)
                         {
                             if (members[b].Attributes["name"].Value == toDelete)
                             {
@@ -602,7 +602,7 @@ namespace Martin_G_Praktika_Forms
                         }
 
                     }
-                
+
                     /*
                            foreach (XmlElement check in members)
                            {
@@ -616,7 +616,7 @@ namespace Martin_G_Praktika_Forms
                 }
             }
             xml.Save("DB.xml");
-           
+
         }
 
         private void addNewToGroup(object sender, EventArgs e)
@@ -634,7 +634,6 @@ namespace Martin_G_Praktika_Forms
 
 
 
-
         private void updateStudentList(object sender, EventArgs e)
         {
             if (active == "Group" && tableItems.SelectedIndices.Count == 1)
@@ -645,7 +644,7 @@ namespace Martin_G_Praktika_Forms
                 XmlNodeList groupList = xml.GetElementsByTagName("Group");
                 int selectedIndex = tableItems.SelectedIndex;
                 XmlNode chosenGroup = groupList[selectedIndex];
-                
+
                 List<string> members = new List<string>();
                 foreach (XmlElement child in chosenGroup.ChildNodes)
                 {
@@ -658,7 +657,7 @@ namespace Martin_G_Praktika_Forms
                     studentList.Items.Add(dude);
                 }
 
-                
+
             }
         }
 
@@ -669,8 +668,8 @@ namespace Martin_G_Praktika_Forms
             xml.Load("DB.xml");
             XmlNodeList groups = xml.GetElementsByTagName("Group");
             XmlElement group = xml.CreateElement("temp");
-            
-            
+
+
             foreach (XmlElement g in groups)
             {
                 if (g.GetAttribute("name") == groupToFind)
@@ -692,6 +691,63 @@ namespace Martin_G_Praktika_Forms
     }
 
     // ------------------------------------     CLASSES     ------------------------------------------------------------------
+
+    public class TestMethods
+    {
+
+
+        public static int testWriting1()
+        {
+            List<int> nodes = new List<int>(); // Testing nodes writings / removing
+
+
+            XmlDocument xml = new XmlDocument();
+            if (!File.Exists("Testing.xml"))
+            {
+                XmlWriter testing = XmlWriter.Create("Testing.xml");
+                testing.WriteStartDocument();
+                testing.WriteStartElement("Root");
+                testing.WriteStartElement("Child");
+                testing.WriteEndElement();
+                testing.WriteEndElement();
+                testing.WriteEndDocument();
+                testing.Close();
+            }
+            xml.Load("Testing.xml");
+            XmlElement testNode = xml.CreateElement("TestNode");
+            testNode.SetAttribute("testAttribute", "value");
+            var node = xml.SelectSingleNode("//Root/Child");
+            node.AppendChild(testNode);
+            xml.Save("Testing.xml");
+            nodes.Add(1);
+            Debug.WriteLine("Added node");
+
+            return nodes.Count;
+        }
+
+        public static string testReading()
+        {
+            testWriting1();
+            XmlDocument xml = new XmlDocument();
+            xml.Load("Testing.xml");
+            var targetNode = xml.SelectSingleNode("//Root/Child/TestNode");
+            //Debug.WriteLine($"{targetNode.Attributes["testAttribute"].Value.ToString()}\n");
+            string attrValue = targetNode.Attributes.Item(0).Value.ToString();
+            return attrValue;
+        }
+
+        public static void clean()
+
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.Load("Testing.xml");
+            var node = xml.SelectSingleNode("//Root/Child");
+            node.RemoveAll();
+            xml.Save("Testing.xml");
+
+        }
+
+    }
 
     class Student
     {
@@ -775,7 +831,7 @@ namespace Martin_G_Praktika_Forms
             newStudent.SetAttribute("name", name);
             newStudent.SetAttribute("surname", surname);
             newStudent.SetAttribute("birthday", birthday);
-           
+
             node.AppendChild(newStudent);
 
             xml.Save("DB.xml");
@@ -784,13 +840,13 @@ namespace Martin_G_Praktika_Forms
             sb.Append(newStudent.GetAttribute("name".ToString()) + " ");
             sb.Append(newStudent.GetAttribute("surname".ToString()) + " | ");
             sb.Append(newStudent.GetAttribute("birthday".ToString()));
-            
+
             tableItems.Items.Add(sb.ToString());
 
             teachersName.Text = "";
             teachersSurname.Text = "";
             teachersBirthday.Text = "";
-            
+
         }
 
     }
@@ -948,7 +1004,7 @@ namespace Martin_G_Praktika_Forms
             }
             */
 
-            for (int i =0; i < studentList.SelectedIndices.Count; i++)
+            for (int i = 0; i < studentList.SelectedIndices.Count; i++)
             {
                 Debug.WriteLine($"Added {studentList.Items[i]} into the list");
                 XmlElement newMember = xml.CreateElement("GroupMember");
@@ -1014,42 +1070,42 @@ namespace Martin_G_Praktika_Forms
     }
     class Schedule
     {
-            // idk how to make this one
-            string teacher, subject, date;
+        // idk how to make this one
+        string teacher, subject, date;
 
-            public Schedule(string teacher, string subject, string date)
-            {
-                this.teacher = teacher;
-                this.subject = subject;
-                this.date = date;
-            }
-            public void addNewSchedule(ListBox tableItems, ComboBox scheduleTeacher, ComboBox scheduleSubject, DateTimePicker scheduleDate)
-            {
-                XmlDocument xml = new XmlDocument();
-                xml.Load("DB.xml");
-                var node = xml.SelectSingleNode("//DataBase/Schedule");
-                XmlElement newStudent = xml.CreateElement("ScheduleEntry");
-                newStudent.SetAttribute("teacher", teacher);
-                newStudent.SetAttribute("subject", subject);
-                newStudent.SetAttribute("date", scheduleDate.Value.ToString());
-
-                node.AppendChild(newStudent);
-
-                xml.Save("DB.xml");
-
-                StringBuilder sb = new StringBuilder();
-                sb.Append(newStudent.GetAttribute("subject".ToString()) + " - ");
-                sb.Append(newStudent.GetAttribute("teacher".ToString()) + " - ");
-                sb.Append(newStudent.GetAttribute("date".ToString()));
-
-
-                tableItems.Items.Add(sb.ToString());
-
-                scheduleTeacher.Text = "";
-                scheduleSubject.Text = "";
-
-            }
+        public Schedule(string teacher, string subject, string date)
+        {
+            this.teacher = teacher;
+            this.subject = subject;
+            this.date = date;
         }
+        public void addNewSchedule(ListBox tableItems, ComboBox scheduleTeacher, ComboBox scheduleSubject, DateTimePicker scheduleDate)
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.Load("DB.xml");
+            var node = xml.SelectSingleNode("//DataBase/Schedule");
+            XmlElement newStudent = xml.CreateElement("ScheduleEntry");
+            newStudent.SetAttribute("teacher", teacher);
+            newStudent.SetAttribute("subject", subject);
+            newStudent.SetAttribute("date", scheduleDate.Value.ToString());
+
+            node.AppendChild(newStudent);
+
+            xml.Save("DB.xml");
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(newStudent.GetAttribute("subject".ToString()) + " - ");
+            sb.Append(newStudent.GetAttribute("teacher".ToString()) + " - ");
+            sb.Append(newStudent.GetAttribute("date".ToString()));
+
+
+            tableItems.Items.Add(sb.ToString());
+
+            scheduleTeacher.Text = "";
+            scheduleSubject.Text = "";
+
+        }
+    }
     class Lesson
     {
         // teacher, group, room
@@ -1059,7 +1115,7 @@ namespace Martin_G_Praktika_Forms
         // awarded to students
     }
 
-   
+
 }
 
 

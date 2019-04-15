@@ -1,5 +1,4 @@
 C:\Users\Zackyy\Source\Repos\Zackyy1\MG-Kursach1-Forms\Martin_G_Praktika_Forms\obj\Debug\Martin_G_Praktika_Forms.csprojAssemblyReference.cache
-C:\Users\Zackyy\Source\Repos\Zackyy1\MG-Kursach1-Forms\Martin_G_Praktika_Forms\obj\Debug\Martin_G_Praktika_Forms.Form1.resources
 C:\Users\Zackyy\Source\Repos\Zackyy1\MG-Kursach1-Forms\Martin_G_Praktika_Forms\obj\Debug\Martin_G_Praktika_Forms.Properties.Resources.resources
 C:\Users\Zackyy\Source\Repos\Zackyy1\MG-Kursach1-Forms\Martin_G_Praktika_Forms\obj\Debug\Martin_G_Praktika_Forms.csproj.GenerateResource.cache
 C:\Users\Zackyy\Source\Repos\Zackyy1\MG-Kursach1-Forms\Martin_G_Praktika_Forms\obj\Debug\Martin_G_Praktika_Forms.csproj.CoreCompileInputs.cache
@@ -8,3 +7,4 @@ C:\Users\Zackyy\Source\Repos\Zackyy1\MG-Kursach1-Forms\Martin_G_Praktika_Forms\b
 C:\Users\Zackyy\Source\Repos\Zackyy1\MG-Kursach1-Forms\Martin_G_Praktika_Forms\bin\Debug\Martin_G_Praktika_Forms.pdb
 C:\Users\Zackyy\Source\Repos\Zackyy1\MG-Kursach1-Forms\Martin_G_Praktika_Forms\obj\Debug\Martin_G_Praktika_Forms.exe
 C:\Users\Zackyy\Source\Repos\Zackyy1\MG-Kursach1-Forms\Martin_G_Praktika_Forms\obj\Debug\Martin_G_Praktika_Forms.pdb
+C:\Users\Zackyy\Source\Repos\Zackyy1\MG-Kursach1-Forms\Martin_G_Praktika_Forms\obj\Debug\Martin_G_Praktika_Forms.Form1.resources

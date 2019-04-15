@@ -43,10 +43,10 @@
       <GroupMember name="Darth Maul" />
     </Group>
     <Group name="Cool guys" teacher="Mace Windu">
-      <GroupMember name="Han Solo" />
       <GroupMember name="Leia Skywalker" />
-      <GroupMember name="Luke Skywalker" />
       <GroupMember name="Chew Bacca" />
+      <GroupMember name="Han Solo" />
+      <GroupMember name="Luke Skywalker" />
     </Group>
   </Groups>
   <Subjects>
