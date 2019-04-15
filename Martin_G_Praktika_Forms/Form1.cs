@@ -16,8 +16,8 @@ namespace Martin_G_Praktika_Forms
         public Form1()
         {
 
-            TestMethods.testReading();
-
+            //TestMethods.testReading();
+            TestMethods.testWriting1();
             InitializeComponent();
             if (!File.Exists("DB.xml"))
             {
@@ -710,7 +710,8 @@ namespace Martin_G_Praktika_Forms
                 testing.WriteStartElement("Child");
                 testing.WriteEndElement();
                 testing.WriteEndElement();
-                testing.WriteEndDocument();
+                //testing.WriteEndDocument();
+                testing.Flush();
                 testing.Close();
             }
             xml.Load("Testing.xml");
